@@ -99,11 +99,7 @@ export default function PriceFunnel({ brand }: { brand: Brand }) {
 
   const maxSteps = isFloors ? 5 : 2;
   const resultStep = maxSteps;
-  const title = isFloors ? "Bereken je richtprijs" : "Bereken de richtprijs van je herstelling";
-
   const filteredProducts = products.filter((item) => item.location === location);
-  const selectedProduct = products.find((item) => item.key === product);
-  const selectedTiming = timings.find((item) => item.key === timing)?.label ?? "";
   const selectedRepair = repairPrices.find((item) => item.key === repairSize);
 
   const floorResult = useMemo(() => {
@@ -243,28 +239,15 @@ export default function PriceFunnel({ brand }: { brand: Brand }) {
 
       {step === resultStep && (
         <div className="result-panel" aria-live="polite">
-          <div className="result-panel__summary">
-            <div className="result-panel__intro"><span className="result-check" aria-hidden="true">✓</span><div><p className="step-label">Jouw richtprijs</p><h2>Dit budget mag je verwachten</h2></div></div>
-            <div className="price-box">
-              <span>Indicatieve richtprijs</span>
-              <strong>{priceText}</strong>
-              <small>{isFloors ? floorResult?.detail : selectedRepair?.low === null ? "Voor grotere herstellingen bekijken we de situatie ter plaatse." : "Totaalprijs voor de herstelling"}</small>
-            </div>
-            <dl className="choice-summary">
-              <div><dt>Project</dt><dd>{isFloors ? `${selectedProduct?.label}, ${area} m²` : `Vloerherstelling, ${selectedRepair?.label}`}</dd></div>
-              {isFloors && <div><dt>Ondergrond</dt><dd>{subfloor}</dd></div>}
-              <div><dt>Timing</dt><dd>{selectedTiming}</dd></div>
-            </dl>
-            <p className="price-note">Deze schatting is vrijblijvend en onder voorbehoud van een plaatsbezoek en de staat van de ondergrond.</p>
-            <button className="edit-link" onClick={restart}>Antwoorden aanpassen</button>
-          </div>
-
-          <div className="lead-panel">
+          <div className="lead-panel" id="offerte">
             {!submitted ? (
               <>
-                <span className="contact-kicker">Past dit binnen je budget?</span>
-                <h3>Laat ons je project verder bekijken.</h3>
-                <p>Vul je gegevens in. Een vloerspecialist neemt contact op voor een exacte offerte.</p>
+                <div className="compact-estimate">
+                  <strong>{priceText}</strong>
+                </div>
+                <span className="contact-kicker">Voor een exacte prijs</span>
+                <h3>Vraag je offerte op maat aan.</h3>
+                <p>Laat je gegevens achter. Een vloerspecialist bekijkt je project en neemt persoonlijk contact op.</p>
                 <form onSubmit={submitLead}>
                   <div className="form-grid">
                     <Field label="Voornaam" name="firstName" autoComplete="given-name" />
@@ -275,11 +258,11 @@ export default function PriceFunnel({ brand }: { brand: Brand }) {
                     <Field label="Telefoon" name="phone" type="tel" placeholder="04xx xx xx xx" />
                   </div>
                   <label className="field field--full"><span>Vertel kort over je project <em>(optioneel)</em></span><textarea name="message" rows={3} placeholder={isFloors ? "Nieuwbouw, renovatie, gewenste kleur…" : "Type schade, locatie, toegankelijkheid…"} /></label>
-                  <label className="consent"><input type="checkbox" required /><span><strong>Ja, ik wil gecontacteerd worden</strong> over mijn project en een offerte op maat ontvangen.</span></label>
+                  <label className="consent"><input type="checkbox" required /><span><strong>Ja, ik wil gecontacteerd worden voor een exacte offerte</strong> voor mijn project.</span></label>
                   <label className="consent consent--small"><input type="checkbox" required /><span>Ik heb de <a href={isFloors ? "https://www.floorsandmore.be/privacy/" : "https://abbi.be/privacy-policy/"} target="_blank" rel="noreferrer">privacyverklaring</a> gelezen en ga akkoord met de verwerking van mijn gegevens.</span></label>
                   <input type="hidden" name="estimate" value={priceText} />
-                  <button className="submit-button" type="submit">Neem contact met mij op <span aria-hidden="true">→</span></button>
-                  <small className="form-assurance">Geen spam. Alleen persoonlijk advies over jouw project.</small>
+                  <button className="submit-button" type="submit">Vraag mijn exacte offerte aan <span aria-hidden="true">→</span></button>
+                  <small className="form-assurance">Gratis en vrijblijvend · Geen spam · Persoonlijk advies</small>
                 </form>
               </>
             ) : (
