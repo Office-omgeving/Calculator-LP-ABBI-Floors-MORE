@@ -13,7 +13,7 @@ const timings: Array<{ key: Timing; label: string }> = [
 ];
 
 const products = [
-  { key: "comfort-pu", label: "Comfort + PU", location: "binnen", image: "/assets/comfort-pu.png", description: "Warm, elastisch en volledig naadloos." },
+  { key: "comfort-pu", label: "Comfort + PU", location: "binnen", image: "/assets/floors-more-hero.png", description: "Effen, warm, elastisch en volledig naadloos." },
   { key: "betonlook", label: "Betonlook", location: "binnen", image: "/assets/betonlook.jpg", description: "Strak karakter met comfortabel loopgevoel." },
   { key: "mineral-touch", label: "Mineral Touch", location: "binnen", image: "/assets/mineral-touch.jpg", description: "Natuurlijke nuance, krasbestendig en elastisch." },
   { key: "sand-touch", label: "Sand Touch", location: "binnen", image: "/assets/sand-touch.jpg", description: "Robuust, slijtvast en fijn gestructureerd." },
