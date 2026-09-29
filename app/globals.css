@@ -134,11 +134,19 @@ a { color: inherit; }
 .result-actions small { color: var(--muted); font-size: 9px; }
 .result-actions .edit-link { padding: 0; white-space: nowrap; font-size: 10px; }
 .lead-panel { min-width: 0; scroll-margin-top: 12px; margin-top: 0; padding: clamp(26px, 5vw, 46px); border: 1px solid color-mix(in srgb, var(--accent) 60%, #ddd); border-top: 7px solid var(--accent); border-radius: 12px; background: #fff; box-shadow: 0 18px 46px rgba(24,29,34,.09); }
-.compact-estimate { margin: calc(clamp(26px, 5vw, 46px) * -1) calc(clamp(26px, 5vw, 46px) * -1) 28px; padding: 13px clamp(18px, 4vw, 30px); border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, #ddd); display: flex; align-items: center; justify-content: center; background: var(--accent-pale); }
-.compact-estimate strong { color: var(--ink); font-size: 22px; line-height: 1; letter-spacing: -.025em; white-space: nowrap; }
+.price-result-card { margin: calc(clamp(26px, 5vw, 46px) * -1) calc(clamp(26px, 5vw, 46px) * -1) 32px; padding: 26px clamp(18px, 4vw, 32px) 28px; border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, #ddd); display: flex; flex-direction: column; align-items: center; background: var(--accent-pale); text-align: center; }
+.price-result-card > span { color: var(--accent-dark); font-size: 12px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.price-result-card strong { margin: 10px 0 8px; color: var(--ink); font-size: clamp(38px, 7vw, 60px); line-height: .95; letter-spacing: -.045em; white-space: nowrap; }
+.price-result-card small { color: var(--muted); font-size: 11px; font-weight: 700; }
 .contact-kicker { display: inline-block; margin-bottom: 14px; color: var(--accent-dark); font-size: 13px; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
 .lead-panel h3 { margin: 0; max-width: 600px; color: var(--ink); font-size: clamp(32px, 5vw, 46px); line-height: 1.05; letter-spacing: -.04em; }
-.lead-panel > p, .success-card > p:not(.step-label) { margin: 18px 0 30px; color: var(--muted); font-size: 17px; line-height: 1.5; }
+.lead-panel > p, .quote-choice > p, .quote-form > p, .success-card > p:not(.step-label) { margin: 18px 0 30px; color: var(--muted); font-size: 17px; line-height: 1.5; }
+.quote-choice { display: flex; flex-direction: column; align-items: flex-start; }
+.quote-choice__button { width: 100%; min-height: 64px; padding: 18px 22px; border: 0; border-radius: 7px; display: flex; align-items: center; justify-content: space-between; color: white; background: var(--ink); font-size: 17px; font-weight: 900; text-align: left; cursor: pointer; transition: transform .18s, box-shadow .18s; }
+.quote-choice__button:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(24,29,34,.14); }
+.quote-choice__note { width: 100%; margin: 13px 0 5px; color: var(--muted); font-size: 11px; line-height: 1.45; text-align: center; }
+.quote-choice .edit-link { align-self: center; }
+.quote-form { scroll-margin-top: 18px; }
 .form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field > span { color: var(--ink); font-size: 13px; font-weight: 800; }
@@ -243,10 +251,11 @@ a { color: inherit; }
   .result-meta { flex-direction: column; gap: 3px; }
   .result-actions { align-items: flex-end; }
   .lead-panel { margin-top: 0; padding: 26px 20px; }
-  .compact-estimate { margin: -26px -20px 24px; padding: 12px 16px; gap: 9px; }
-  .compact-estimate strong { font-size: 19px; }
+  .price-result-card { margin: -26px -20px 26px; padding: 23px 16px 24px; }
+  .price-result-card strong { font-size: clamp(36px, 11vw, 48px); }
   .lead-panel h3 { font-size: 34px; }
-  .lead-panel > p { margin-bottom: 26px; font-size: 15px; }
+  .lead-panel > p, .quote-choice > p, .quote-form > p { margin-bottom: 26px; font-size: 15px; }
+  .quote-choice__button { min-height: 60px; padding: 16px 18px; font-size: 15px; }
   .field input { height: 58px; }
   .success-card { min-height: 330px; }
   .proof-strip { padding-left: 22px; padding-right: 22px; }

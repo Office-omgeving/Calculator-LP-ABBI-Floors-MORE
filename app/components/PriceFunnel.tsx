@@ -95,6 +95,7 @@ export default function PriceFunnel({ brand }: { brand: Brand }) {
   const [area, setArea] = useState("");
   const [timing, setTiming] = useState<Timing | "">("");
   const [repairSize, setRepairSize] = useState("");
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const maxSteps = isFloors ? 5 : 2;
@@ -120,7 +121,14 @@ export default function PriceFunnel({ brand }: { brand: Brand }) {
   const back = () => setStep((current) => Math.max(0, current - 1));
   const restart = () => {
     setStep(0); setLocation(""); setProduct(""); setSubfloor(""); setArea("");
-    setTiming(""); setRepairSize(""); setSubmitted(false);
+    setTiming(""); setRepairSize(""); setShowQuoteForm(false); setSubmitted(false);
+  };
+
+  const openQuoteForm = () => {
+    setShowQuoteForm(true);
+    requestAnimationFrame(() => {
+      document.getElementById("offerteformulier")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
   const submitLead = (event: FormEvent<HTMLFormElement>) => {
@@ -242,28 +250,46 @@ export default function PriceFunnel({ brand }: { brand: Brand }) {
           <div className="lead-panel" id="offerte">
             {!submitted ? (
               <>
-                <div className="compact-estimate">
+                <div className="price-result-card">
+                  <span>Jouw richtprijs</span>
                   <strong>{priceText}</strong>
+                  <small>Indicatieve prijs · gratis en vrijblijvend berekend</small>
                 </div>
-                <span className="contact-kicker">Voor een exacte prijs</span>
-                <h3>Vraag je offerte op maat aan.</h3>
-                <p>Laat je gegevens achter. Een vloerspecialist bekijkt je project en neemt persoonlijk contact op.</p>
-                <form onSubmit={submitLead}>
-                  <div className="form-grid">
-                    <Field label="Voornaam" name="firstName" autoComplete="given-name" />
-                    <Field label="Achternaam" name="lastName" autoComplete="family-name" />
-                    {!isFloors && <Field label="Bedrijf" name="company" placeholder="Bedrijfsnaam" />}
-                    <Field label="Postcode" name="postalCode" inputMode="numeric" placeholder="2800" />
-                    <Field label="E-mail" name="email" type="email" placeholder="naam@voorbeeld.be" />
-                    <Field label="Telefoon" name="phone" type="tel" placeholder="04xx xx xx xx" />
+
+                {!showQuoteForm ? (
+                  <div className="quote-choice">
+                    <span className="contact-kicker">Wil je een exacte prijs?</span>
+                    <h3>Vraag vrijblijvend een offerte op maat aan.</h3>
+                    <p>Een specialist bekijkt je project en neemt contact met je op. Alleen als jij dat wilt.</p>
+                    <button className="quote-choice__button" type="button" onClick={openQuoteForm}>
+                      Ja, ik wil een offerte op maat <span aria-hidden="true">→</span>
+                    </button>
+                    <small className="quote-choice__note">Liever niet? Geen probleem — je richtprijs staat hierboven.</small>
+                    <button className="edit-link" type="button" onClick={restart}>Richtprijs opnieuw berekenen</button>
                   </div>
-                  <label className="field field--full"><span>Vertel kort over je project <em>(optioneel)</em></span><textarea name="message" rows={3} placeholder={isFloors ? "Nieuwbouw, renovatie, gewenste kleur…" : "Type schade, locatie, toegankelijkheid…"} /></label>
-                  <label className="consent"><input type="checkbox" required /><span><strong>Ja, ik wil gecontacteerd worden voor een exacte offerte</strong> voor mijn project.</span></label>
-                  <label className="consent consent--small"><input type="checkbox" required /><span>Ik heb de <a href={isFloors ? "https://www.floorsandmore.be/privacy/" : "https://abbi.be/privacy-policy/"} target="_blank" rel="noreferrer">privacyverklaring</a> gelezen en ga akkoord met de verwerking van mijn gegevens.</span></label>
-                  <input type="hidden" name="estimate" value={priceText} />
-                  <button className="submit-button" type="submit">Vraag mijn exacte offerte aan <span aria-hidden="true">→</span></button>
-                  <small className="form-assurance">Gratis en vrijblijvend · Geen spam · Persoonlijk advies</small>
-                </form>
+                ) : (
+                  <div className="quote-form" id="offerteformulier">
+                    <span className="contact-kicker">Offerte op maat</span>
+                    <h3>Vul je gegevens in.</h3>
+                    <p>Een vloerspecialist bekijkt je aanvraag en neemt persoonlijk contact op voor een exacte offerte.</p>
+                    <form onSubmit={submitLead}>
+                      <div className="form-grid">
+                        <Field label="Voornaam" name="firstName" autoComplete="given-name" />
+                        <Field label="Achternaam" name="lastName" autoComplete="family-name" />
+                        {!isFloors && <Field label="Bedrijf" name="company" placeholder="Bedrijfsnaam" />}
+                        <Field label="Postcode" name="postalCode" inputMode="numeric" placeholder="2800" />
+                        <Field label="E-mail" name="email" type="email" placeholder="naam@voorbeeld.be" />
+                        <Field label="Telefoon" name="phone" type="tel" placeholder="04xx xx xx xx" />
+                      </div>
+                      <label className="field field--full"><span>Vertel kort over je project <em>(optioneel)</em></span><textarea name="message" rows={3} placeholder={isFloors ? "Nieuwbouw, renovatie, gewenste kleur…" : "Type schade, locatie, toegankelijkheid…"} /></label>
+                      <label className="consent"><input type="checkbox" required /><span><strong>Ja, ik wil gecontacteerd worden voor een exacte offerte</strong> voor mijn project.</span></label>
+                      <label className="consent consent--small"><input type="checkbox" required /><span>Ik heb de <a href={isFloors ? "https://www.floorsandmore.be/privacy/" : "https://abbi.be/privacy-policy/"} target="_blank" rel="noreferrer">privacyverklaring</a> gelezen en ga akkoord met de verwerking van mijn gegevens.</span></label>
+                      <input type="hidden" name="estimate" value={priceText} />
+                      <button className="submit-button" type="submit">Vraag mijn exacte offerte aan <span aria-hidden="true">→</span></button>
+                      <small className="form-assurance">Gratis en vrijblijvend · Geen spam · Persoonlijk advies</small>
+                    </form>
+                  </div>
+                )}
               </>
             ) : (
               <div className="success-card">
