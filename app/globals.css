@@ -134,10 +134,10 @@ a { color: inherit; }
 .result-actions small { color: var(--muted); font-size: 9px; }
 .result-actions .edit-link { padding: 0; white-space: nowrap; font-size: 10px; }
 .lead-panel { min-width: 0; scroll-margin-top: 12px; margin-top: 0; padding: clamp(26px, 5vw, 46px); border: 1px solid color-mix(in srgb, var(--accent) 60%, #ddd); border-top: 7px solid var(--accent); border-radius: 12px; background: #fff; box-shadow: 0 18px 46px rgba(24,29,34,.09); }
-.price-result-card { margin: calc(clamp(26px, 5vw, 46px) * -1) calc(clamp(26px, 5vw, 46px) * -1) 36px; padding: 32px clamp(18px, 4vw, 32px) 34px; border-bottom: 2px solid color-mix(in srgb, var(--accent) 58%, #ddd); display: flex; flex-direction: column; align-items: center; background: var(--accent-pale); text-align: center; }
-.price-result-card > span { color: var(--accent-dark); font-size: 14px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
-.price-result-card strong { margin: 14px 0 10px; color: var(--ink); font-size: clamp(50px, 9vw, 78px); font-weight: 900; line-height: .92; letter-spacing: -.055em; white-space: nowrap; }
-.price-result-card small { color: var(--muted); font-size: 12px; font-weight: 700; }
+.price-result-card { margin: calc(clamp(26px, 5vw, 46px) * -1) calc(clamp(26px, 5vw, 46px) * -1) 40px; padding: 42px 8px 40px; border-top: 8px solid var(--accent); border-bottom: 3px solid color-mix(in srgb, var(--accent) 68%, #ddd); display: flex; flex-direction: column; align-items: center; overflow: hidden; background: var(--accent-pale); text-align: center; }
+.price-result-card > span { color: var(--accent-dark); font-size: 16px; font-weight: 900; letter-spacing: .15em; text-transform: uppercase; }
+.price-result-card strong { width: 114%; margin: 20px -7% 16px; color: var(--ink); font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: clamp(62px, 10vw, 96px); font-weight: 900; line-height: .86; letter-spacing: -.07em; white-space: nowrap; transform: scaleX(.88); }
+.price-result-card small { color: var(--muted); font-size: 13px; font-weight: 800; }
 .contact-kicker { display: inline-block; margin-bottom: 14px; color: var(--accent-dark); font-size: 13px; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
 .lead-panel h3 { margin: 0; max-width: 600px; color: var(--ink); font-size: clamp(32px, 5vw, 46px); line-height: 1.05; letter-spacing: -.04em; }
 .lead-panel > p, .quote-choice > p, .quote-form > p, .success-card > p:not(.step-label) { margin: 18px 0 30px; color: var(--muted); font-size: 17px; line-height: 1.5; }
@@ -251,10 +251,11 @@ a { color: inherit; }
   .result-meta { flex-direction: column; gap: 3px; }
   .result-actions { align-items: flex-end; }
   .lead-panel { margin-top: 0; padding: 26px 20px; }
-  .price-result-card { margin: -26px -20px 28px; padding: 28px 10px 29px; }
-  .price-result-card > span { font-size: 12px; }
-  .price-result-card strong { font-size: clamp(36px, 10vw, 46px); letter-spacing: -.06em; }
-  .lead-panel h3 { font-size: 34px; }
+  .price-result-card { margin: -26px -20px 30px; padding: 34px 4px 32px; }
+  .price-result-card > span { font-size: 13px; }
+  .price-result-card strong { width: 128%; margin: 18px -14% 14px; font-size: clamp(50px, 14vw, 58px); letter-spacing: -.075em; transform: scaleX(.78); }
+  .price-result-card small { max-width: 270px; font-size: 11px; line-height: 1.4; }
+  .lead-panel h3 { font-size: 30px; }
   .lead-panel > p, .quote-choice > p, .quote-form > p { margin-bottom: 26px; font-size: 15px; }
   .quote-choice__button { min-height: 60px; padding: 16px 18px; font-size: 15px; }
   .field input { height: 58px; }
