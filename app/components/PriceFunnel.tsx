@@ -71,7 +71,23 @@ const repairPrices = [
 
 const euro = (value: number) => new Intl.NumberFormat("nl-BE", {
   style: "currency", currency: "EUR", maximumFractionDigits: 0,
-}).format(value);
+}).format(value).replace(/\s/g, "");
+
+function PriceValue({ value }: { value: string }) {
+  const range = value.split(" – ");
+
+  if (range.length === 2) {
+    return (
+      <strong className="price-value">
+        <span>{range[0]}</span>
+        <span className="price-value__separator" aria-hidden="true">–</span>
+        <span>{range[1]}</span>
+      </strong>
+    );
+  }
+
+  return <strong className="price-value">{value}</strong>;
+}
 
 function CheckIcon() {
   return <span className="check-icon" aria-hidden="true">✓</span>;
@@ -252,7 +268,7 @@ export default function PriceFunnel({ brand }: { brand: Brand }) {
               <>
                 <div className="price-result-card">
                   <span>Jouw richtprijs</span>
-                  <strong>{priceText}</strong>
+                  <PriceValue value={priceText} />
                   <small>Indicatieve prijs · gratis en vrijblijvend berekend</small>
                 </div>
 
