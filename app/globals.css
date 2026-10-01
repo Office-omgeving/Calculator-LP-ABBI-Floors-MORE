@@ -136,7 +136,7 @@ a { color: inherit; }
 .lead-panel { min-width: 0; scroll-margin-top: 12px; margin-top: 0; padding: clamp(26px, 5vw, 46px); border: 1px solid color-mix(in srgb, var(--accent) 60%, #ddd); border-top: 7px solid var(--accent); border-radius: 12px; background: #fff; box-shadow: 0 18px 46px rgba(24,29,34,.09); }
 .price-result-card { margin: calc(clamp(26px, 5vw, 46px) * -1) calc(clamp(26px, 5vw, 46px) * -1) 40px; padding: 42px 8px 40px; border-top: 8px solid var(--accent); border-bottom: 3px solid color-mix(in srgb, var(--accent) 68%, #ddd); display: flex; flex-direction: column; align-items: center; overflow: hidden; background: var(--accent-pale); text-align: center; }
 .price-result-card > span { color: var(--accent-dark); font-size: 16px; font-weight: 900; letter-spacing: .15em; text-transform: uppercase; }
-.price-result-card .price-value { width: 100%; margin: 20px 0 18px; display: flex; align-items: baseline; justify-content: center; gap: .12em; color: var(--ink); font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: clamp(58px, 8vw, 82px); font-weight: 900; line-height: .95; letter-spacing: -.035em; white-space: nowrap; }
+.price-result-card .price-value { width: 100%; margin: 20px 0 18px; display: flex; align-items: baseline; justify-content: center; gap: .18em; color: var(--ink); font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: clamp(58px, 8vw, 82px); font-weight: 900; line-height: .95; letter-spacing: -.035em; white-space: nowrap; }
 .price-value__separator { margin: 0 .03em; color: color-mix(in srgb, var(--ink) 78%, white); font-weight: 700; }
 .price-result-card small { color: var(--muted); font-size: 13px; font-weight: 800; }
 .contact-kicker { display: inline-block; margin-bottom: 14px; color: var(--accent-dark); font-size: 13px; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
@@ -254,7 +254,7 @@ a { color: inherit; }
   .lead-panel { margin-top: 0; padding: 26px 20px; }
   .price-result-card { margin: -26px -20px 30px; padding: 34px 4px 32px; }
   .price-result-card > span { font-size: 13px; }
-  .price-result-card .price-value { margin: 18px 0 16px; gap: .1em; font-size: clamp(43px, 12.5vw, 50px); line-height: 1; letter-spacing: -.04em; }
+  .price-result-card .price-value { margin: 18px 0 16px; gap: .18em; font-size: clamp(43px, 12.5vw, 50px); line-height: 1; letter-spacing: -.04em; }
   .price-value__separator { margin: 0 .02em; }
   .price-result-card small { max-width: 270px; font-size: 11px; line-height: 1.4; }
   .lead-panel h3 { font-size: 30px; }
